@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="/fragment/header :: header">
+
+
+</head>
+<body>
+<div class="container-style2">
+    <h1>用户添加</h1>
+<form action="/users/add" th:method="POST" th:object="${userModel.user}">
+    <div class="form-group">
+
+        <!--<input type="hidden" name="id" th:value="*{id}"/>-->
+        <input type="hidden" class="form-control" name="id" th:value="*{id}" placeholder="id"/>
+        名称<br/>
+        <!--<input type="text" name="name" th:value="*{name}"/>-->
+        <input type="text" class="form-control" name="name" th:value="*{name}" placeholder="name"/>
+        <br/>
+        邮箱<br/>
+        <!--<input type="text" name="email" th:value="*{email}"/>-->
+        <input type="text" class="form-control" name="email" th:value="*{email}" placeholder="Email"/>
+        <br/>
+
+        <!--<input type="submit" value="提交"/>-->
+        <button type="submit" class="btn btn-default">Submit</button>
+        <!--<button class="btn btn-default" th:onclick="window.location.href=''">Cancel</button>-->
+
+        <button type="button" onclick="window.history.go(-1)" class="btn btn-default">Cancel</button>
+
+
+
+    </div>
+</form>
+</div>
+<div th:replace="/fragment/footer ::footer"></div>
+</body>
+</html>

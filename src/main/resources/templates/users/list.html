@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head th:replace="/fragment/header :: header">
+    <!--<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>-->
+    <!--<meta charset="UTF-8"/>-->
+    <!--<title>Thymeleaf in action</title>-->
+
+    </head>
+<body>
+
+
+<div class="container container-style" >
+
+<table class="table table-bordered">
+    <thead>
+    <tr>
+        <td>id</td>
+        <td>name</td>
+        <td>email</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${userModel.userList.size()} eq 0">
+        <td colspan="4">没有用户信息</td>
+    </tr>
+    <tr th:each="user : ${userModel.userList}">
+        <td th:text="${user.id}">1</td>
+        <td><a th:href="@{'/users/'+${user.id}}" th:text="${user.name}"></a></td>
+        <td th:text="${user.email}">2112</td>
+        <td><a th:href="@{'/users/delete/'+${user.id}}">删除</a>
+            <a th:href="@{'/users/modify/'+${user.id}}">修改</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+    <!--<table class="table table-bordered">-->
+        <!--<thead>-->
+            <!--<tr>-->
+                <!--<td>id</td>-->
+                <!--<td>name</td>-->
+                <!--<td>email</td>-->
+                <!--<td>操作</td>-->
+            <!--</tr>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+            <!--<tr th:if="${userModel.userList.size()} eq 0">-->
+                <!--<td><span>没有用户信息</span></td>-->
+            <!--</tr>-->
+            <!--<tr th:each="user : ${userModel.userList}">-->
+                <!--<td th:text="${user.id}"></td>-->
+                <!--<td><a th:href="@{'/users/'+${user.id}}" th:text="${user.name}"></a></td>-->
+                <!--<td th:text="${user.email}"></td>-->
+                <!--<td>-->
+                    <!--<a th:href="@{'/users/delete/'+${user.id}}">删除</a>-->
+                    <!--<a th:href="@{'/users/modify/'+${user.id}}">修改</a>-->
+                <!--</td>-->
+            <!--</tr>-->
+
+        <!--</tbody>-->
+    <!--</table>-->
+</div>
+
+<div th:replace="/fragment/footer ::footer"></div>
+
+
+</body>
+</html>
